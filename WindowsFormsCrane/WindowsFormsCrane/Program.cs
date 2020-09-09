@@ -16,7 +16,7 @@ namespace WindowsFormsCrane
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormCrane());
+            Application.Run(new CraneForm());
         }
     }
 }
