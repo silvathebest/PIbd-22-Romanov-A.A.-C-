@@ -21,12 +21,12 @@ namespace WindowsFormsCrane
         /// Конструктор
         /// </summary>
         /// <param name="maxSpeed">Максимальная скорость</param>
-        /// <param name="weight">Вес автомобиля</param>
+        /// <param name="weight">Вес крана</param>
         /// <param name="mainColor">Основной цвет кузова</param>
         /// <param name="dopColor">Дополнительный цвет</param>
-        /// <param name="FrontCrane">Признак наличия переднего спойлера</param>
-        /// <param name="Hook">Признак наличия боковых спойлеров</param>
-        /// <param name="BackPipe">Признак наличия заднего спойлера</param>
+        /// <param name="FrontCrane">Признак наличия переднего крана</param>
+        /// <param name="Hook">Признак наличия боковых ковша</param>
+        /// <param name="BackPipe">Признак наличия задней трубы</param>
         public Crane(int maxSpeed, float weight, Color mainColor, Color dopColor,
        bool frontCrane, bool hook, bool backPipe) : base(maxSpeed, weight, mainColor, 120, 200)
         {

@@ -10,13 +10,13 @@ namespace WindowsFormsCrane
     public class TrackedVehicle : Vehicle
     {
         /// <summary>
-        /// Ширина отрисовки автомобиля
+        /// Ширина отрисовки гусеничного автомобиля
         /// </summary>
-        protected readonly int vehicleWidth = 90;
+        protected readonly int vehicleWidth = 120;
         /// <summary>
-        /// Высота отрисовки автомобиля
+        /// Высота отрисовки гусеничного автомобиля
         /// </summary>
-        protected readonly int vehicleHeight = 50;
+        protected readonly int vehicleHeight = 200;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -33,10 +33,10 @@ namespace WindowsFormsCrane
         /// Конструкторс изменением размеров машины
         /// </summary>
         /// <param name="maxSpeed">Максимальная скорость</param>
-        /// <param name="weight">Вес автомобиля</param>
+        /// <param name="weight">Вес гусеничного автомобиля</param>
         /// <param name="mainColor">Основной цвет кузова</param>
-        /// <param name="carWidth">Ширина отрисовки автомобиля</param>
-        /// <param name="carHeight">Высота отрисовки автомобиля</param>
+        /// <param name="carWidth">Ширина отрисовки гусеничного автомобиля</param>
+        /// <param name="carHeight">Высота отрисовки гусеничного автомобиля</param>
         protected TrackedVehicle(int maxSpeed, float weight, Color mainColor, int carWidth, int
        carHeight)
         {
