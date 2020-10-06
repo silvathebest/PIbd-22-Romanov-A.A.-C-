@@ -12,7 +12,7 @@ namespace WindowsFormsCrane
 {
     public partial class CraneForm : Form
     {
-        private Crane vehicle;
+        private ITransport vehicle;
         public CraneForm()
         {
             InitializeComponent();
@@ -26,7 +26,17 @@ namespace WindowsFormsCrane
             pictureBoxCrane.Image = bitmap;
         }
 
-        private void buttonCreate_Click(object sender, EventArgs e)
+        private void buttonCreateTrackedVehicle_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            vehicle = new TrackedVehicle(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
+            vehicle.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCrane.Width,
+           pictureBoxCrane.Height);
+            Draw();
+
+        }
+
+        private void buttonCreateCrane_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             vehicle = new Crane(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,

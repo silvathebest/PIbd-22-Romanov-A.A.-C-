@@ -54,8 +54,11 @@
       <DependentUpon>CraneForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Direction.cs" />
+    <Compile Include="ITransport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrackedVehicle.cs" />
+    <Compile Include="Vehicle.cs" />
     <EmbeddedResource Include="CraneForm.resx">
       <DependentUpon>CraneForm.cs</DependentUpon>
     </EmbeddedResource>
