@@ -16,7 +16,7 @@ namespace WindowsFormsCrane
         /// <summary>
         /// Высота отрисовки гусеничного автомобиля
         /// </summary>
-        protected readonly int vehicleHeight = 200;
+        protected readonly int vehicleHeight = 45;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -89,14 +89,14 @@ namespace WindowsFormsCrane
             Brush brush = new SolidBrush(MainColor);
             Brush brushBlack = new SolidBrush(Color.Black);
             //рисуем кузов гуснечной машины
-            g.FillRectangle(brush, _startPosX + 10, _startPosY + vehicleHeight - 50, vehicleWidth - 20, 30);
+            g.FillRectangle(brush, _startPosX + 5, _startPosY + vehicleHeight - 20, vehicleWidth , 30);
             //гусеницы
-            g.FillEllipse(brushBlack, _startPosX, _startPosY + vehicleHeight - 20, 25, 20);
-            g.FillEllipse(brushBlack, _startPosX + 30, _startPosY + vehicleHeight - 20, 25, 20);
-            g.FillEllipse(brushBlack, _startPosX + 55, _startPosY + vehicleHeight - 20, 25, 20);
-            g.FillEllipse(brushBlack, _startPosX + 80, _startPosY + vehicleHeight - 20, 25, 20);
-            g.FillEllipse(brushBlack, _startPosX + 105, _startPosY + vehicleHeight - 20, 25, 20);
-            g.DrawRectangle(pen, _startPosX + 10, _startPosY + vehicleHeight - 20, vehicleWidth - 10, 20);
+            g.FillEllipse(brushBlack, _startPosX, _startPosY + vehicleHeight + 10, 25, 20);
+            g.FillEllipse(brushBlack, _startPosX + 25, _startPosY + vehicleHeight + 10, 25, 20);
+            g.FillEllipse(brushBlack, _startPosX + 50, _startPosY + vehicleHeight + 10, 25, 20);
+            g.FillEllipse(brushBlack, _startPosX + 75, _startPosY + vehicleHeight + 10, 25, 20);
+            g.FillEllipse(brushBlack, _startPosX + 100, _startPosY + vehicleHeight + 10, 25, 20);
+            g.DrawRectangle(pen, _startPosX + 10, _startPosY + vehicleHeight + 10, vehicleWidth - 15 , 20);
         }
     }
 }

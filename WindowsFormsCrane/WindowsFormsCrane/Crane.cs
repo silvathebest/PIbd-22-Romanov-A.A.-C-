@@ -28,7 +28,7 @@ namespace WindowsFormsCrane
         /// <param name="Hook">Признак наличия боковых ковша</param>
         /// <param name="BackPipe">Признак наличия задней трубы</param>
         public Crane(int maxSpeed, float weight, Color mainColor, Color dopColor,
-       bool frontCrane, bool hook, bool backPipe) : base(maxSpeed, weight, mainColor, 120, 200)
+       bool frontCrane, bool hook, bool backPipe) : base(maxSpeed, weight, mainColor, 120, 50)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
@@ -46,25 +46,24 @@ namespace WindowsFormsCrane
         public override void DrawTransport(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-            Brush brush = new SolidBrush(MainColor);
             Brush dopBrush = new SolidBrush(DopColor);
             //рисуем кузов и гусеницы
             base.DrawTransport(g);
             //кран
             if (FrontCrane)
             {
-                g.DrawLine(pen, _startPosX + 30, _startPosY + vehicleHeight - 50, _startPosX + 70, _startPosY + 30);
-                g.DrawLine(pen, _startPosX + 70, _startPosY + 30, _startPosX + 80, _startPosY + 70);
+                g.DrawLine(pen, _startPosX + 30, _startPosY + vehicleHeight - 20, _startPosX + 70, _startPosY - 15);
+                g.DrawLine(pen, _startPosX + 70, _startPosY - 15, _startPosX + 80, _startPosY + 10);
             }
             //крюк
             if (Hook)
             {
-                g.DrawArc(pen, _startPosX + 65, _startPosY + 70, 30, 30, 90, 180);
+                g.DrawArc(pen, _startPosX + 75, _startPosY + 10, 10, 10, 90, 180);
             }
             //задняя труба
             if (BackPipe)
             {
-                g.FillRectangle(dopBrush, _startPosX + 15, _startPosY + vehicleHeight - 70, 10, 20);
+                g.FillRectangle(dopBrush, _startPosX + 15, _startPosY + vehicleHeight - 40, 10, 25);
             }
         }
     }
