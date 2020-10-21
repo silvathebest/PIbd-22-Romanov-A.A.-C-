@@ -35,6 +35,11 @@
             this.buttonTakeVehicle = new System.Windows.Forms.Button();
             this.maskedTextBoxPickPlace = new System.Windows.Forms.MaskedTextBox();
             this.labelPlace = new System.Windows.Forms.Label();
+            this.labelNameParking = new System.Windows.Forms.Label();
+            this.maskedTextBoxNameParking = new System.Windows.Forms.MaskedTextBox();
+            this.buttonAddParking = new System.Windows.Forms.Button();
+            this.listBoxParking = new System.Windows.Forms.ListBox();
+            this.buttonDelParking = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBoxParking.SuspendLayout();
             this.SuspendLayout();
@@ -43,7 +48,7 @@
             // 
             this.pictureBoxParking.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBoxParking.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxParking.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxParking.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxParking.Name = "pictureBoxParking";
             this.pictureBoxParking.Size = new System.Drawing.Size(896, 687);
             this.pictureBoxParking.TabIndex = 0;
@@ -51,10 +56,10 @@
             // 
             // buttonCrateTrackedVehicle
             // 
-            this.buttonCrateTrackedVehicle.Location = new System.Drawing.Point(904, 15);
-            this.buttonCrateTrackedVehicle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCrateTrackedVehicle.Location = new System.Drawing.Point(904, 368);
+            this.buttonCrateTrackedVehicle.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCrateTrackedVehicle.Name = "buttonCrateTrackedVehicle";
-            this.buttonCrateTrackedVehicle.Size = new System.Drawing.Size(147, 60);
+            this.buttonCrateTrackedVehicle.Size = new System.Drawing.Size(151, 60);
             this.buttonCrateTrackedVehicle.TabIndex = 1;
             this.buttonCrateTrackedVehicle.Text = "Припарковать гусеничную машину";
             this.buttonCrateTrackedVehicle.UseVisualStyleBackColor = true;
@@ -62,10 +67,10 @@
             // 
             // buttonCreateCrane
             // 
-            this.buttonCreateCrane.Location = new System.Drawing.Point(904, 82);
-            this.buttonCreateCrane.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCreateCrane.Location = new System.Drawing.Point(904, 435);
+            this.buttonCreateCrane.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCreateCrane.Name = "buttonCreateCrane";
-            this.buttonCreateCrane.Size = new System.Drawing.Size(147, 60);
+            this.buttonCreateCrane.Size = new System.Drawing.Size(151, 60);
             this.buttonCreateCrane.TabIndex = 2;
             this.buttonCreateCrane.Text = "Припарковать кран";
             this.buttonCreateCrane.UseVisualStyleBackColor = true;
@@ -76,10 +81,10 @@
             this.groupBoxParking.Controls.Add(this.buttonTakeVehicle);
             this.groupBoxParking.Controls.Add(this.maskedTextBoxPickPlace);
             this.groupBoxParking.Controls.Add(this.labelPlace);
-            this.groupBoxParking.Location = new System.Drawing.Point(904, 150);
-            this.groupBoxParking.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxParking.Location = new System.Drawing.Point(904, 503);
+            this.groupBoxParking.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxParking.Name = "groupBoxParking";
-            this.groupBoxParking.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxParking.Padding = new System.Windows.Forms.Padding(4);
             this.groupBoxParking.Size = new System.Drawing.Size(159, 123);
             this.groupBoxParking.TabIndex = 3;
             this.groupBoxParking.TabStop = false;
@@ -88,7 +93,7 @@
             // buttonTakeVehicle
             // 
             this.buttonTakeVehicle.Location = new System.Drawing.Point(13, 71);
-            this.buttonTakeVehicle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonTakeVehicle.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTakeVehicle.Name = "buttonTakeVehicle";
             this.buttonTakeVehicle.Size = new System.Drawing.Size(113, 28);
             this.buttonTakeVehicle.TabIndex = 2;
@@ -99,7 +104,7 @@
             // maskedTextBoxPickPlace
             // 
             this.maskedTextBoxPickPlace.Location = new System.Drawing.Point(73, 21);
-            this.maskedTextBoxPickPlace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.maskedTextBoxPickPlace.Margin = new System.Windows.Forms.Padding(4);
             this.maskedTextBoxPickPlace.Name = "maskedTextBoxPickPlace";
             this.maskedTextBoxPickPlace.Size = new System.Drawing.Size(52, 22);
             this.maskedTextBoxPickPlace.TabIndex = 1;
@@ -114,22 +119,74 @@
             this.labelPlace.TabIndex = 0;
             this.labelPlace.Text = "Место:";
             // 
+            // labelNameParking
+            // 
+            this.labelNameParking.AutoSize = true;
+            this.labelNameParking.Location = new System.Drawing.Point(942, 9);
+            this.labelNameParking.Name = "labelNameParking";
+            this.labelNameParking.Size = new System.Drawing.Size(75, 17);
+            this.labelNameParking.TabIndex = 4;
+            this.labelNameParking.Text = "Парковки:";
+            // 
+            // maskedTextBoxNameParking
+            // 
+            this.maskedTextBoxNameParking.Location = new System.Drawing.Point(904, 29);
+            this.maskedTextBoxNameParking.Name = "maskedTextBoxNameParking";
+            this.maskedTextBoxNameParking.Size = new System.Drawing.Size(151, 22);
+            this.maskedTextBoxNameParking.TabIndex = 5;
+            // 
+            // buttonAddParking
+            // 
+            this.buttonAddParking.Location = new System.Drawing.Point(904, 58);
+            this.buttonAddParking.Name = "buttonAddParking";
+            this.buttonAddParking.Size = new System.Drawing.Size(151, 29);
+            this.buttonAddParking.TabIndex = 6;
+            this.buttonAddParking.Text = "Добавить паркову";
+            this.buttonAddParking.UseVisualStyleBackColor = true;
+            this.buttonAddParking.Click += new System.EventHandler(this.buttonAddParking_Click);
+            // 
+            // listBoxParking
+            // 
+            this.listBoxParking.FormattingEnabled = true;
+            this.listBoxParking.ItemHeight = 16;
+            this.listBoxParking.Location = new System.Drawing.Point(904, 93);
+            this.listBoxParking.Name = "listBoxParking";
+            this.listBoxParking.Size = new System.Drawing.Size(151, 164);
+            this.listBoxParking.TabIndex = 7;
+            this.listBoxParking.SelectedIndexChanged += new System.EventHandler(this.listBoxParkings_SelectedIndexChanged);
+            // 
+            // buttonDelParking
+            // 
+            this.buttonDelParking.Location = new System.Drawing.Point(904, 264);
+            this.buttonDelParking.Name = "buttonDelParking";
+            this.buttonDelParking.Size = new System.Drawing.Size(151, 25);
+            this.buttonDelParking.TabIndex = 8;
+            this.buttonDelParking.Text = "Удалить парковку";
+            this.buttonDelParking.UseVisualStyleBackColor = true;
+            this.buttonDelParking.Click += new System.EventHandler(this.buttonDelParking_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 687);
+            this.Controls.Add(this.buttonDelParking);
+            this.Controls.Add(this.listBoxParking);
+            this.Controls.Add(this.buttonAddParking);
+            this.Controls.Add(this.maskedTextBoxNameParking);
+            this.Controls.Add(this.labelNameParking);
             this.Controls.Add(this.groupBoxParking);
             this.Controls.Add(this.buttonCreateCrane);
             this.Controls.Add(this.buttonCrateTrackedVehicle);
             this.Controls.Add(this.pictureBoxParking);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormParking";
             this.Text = "Парковка";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
             this.groupBoxParking.ResumeLayout(false);
             this.groupBoxParking.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -142,5 +199,10 @@
         private System.Windows.Forms.Button buttonTakeVehicle;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxPickPlace;
         private System.Windows.Forms.Label labelPlace;
+        private System.Windows.Forms.Label labelNameParking;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxNameParking;
+        private System.Windows.Forms.Button buttonAddParking;
+        private System.Windows.Forms.ListBox listBoxParking;
+        private System.Windows.Forms.Button buttonDelParking;
     }
 }

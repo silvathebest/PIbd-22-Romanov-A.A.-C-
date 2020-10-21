@@ -16,7 +16,11 @@ namespace WindowsFormsCrane
         /// <summary>
         /// Массив объектов, которые храним
         /// </summary>
-        private readonly T[] _places;
+        private readonly List<T> _places;
+        /// <summary>
+        /// Максимальное количество мест на парковке
+        /// </summary>
+        private readonly int _maxCount;
         /// <summary>
         /// Ширина окна отрисовки
         /// </summary>
@@ -43,7 +47,8 @@ namespace WindowsFormsCrane
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
-            _places = new T[width * height];
+            _maxCount = width * height;
+            _places = new List<T>();
             pictureWidth = picWidth;
             pictureHeight = picHeight;
         }
@@ -56,18 +61,13 @@ namespace WindowsFormsCrane
         /// <returns></returns>
         public static bool operator +(Parking<T> p, T vehicle)
         {
-            for (int i = 0; i < p._places.Length; i++)
+            if (p._places.Count >= p._maxCount)
             {
-                if (p.CheckFreePlace(i))
-                {
-                    p._places[i] = vehicle;
-                    p._places[i].SetPosition(5 + i / 5 * p._placeSizeWidth + 5,
-                     i % 5 * p._placeSizeHeight + 15, p.pictureWidth,
-                    p.pictureHeight);
-                    return true;
-                }
+                return false;
             }
-            return false;
+            p._places.Add(vehicle);
+            return true;
+
         }
         /// <summary>
         /// Перегрузка оператора вычитания
@@ -78,18 +78,13 @@ namespace WindowsFormsCrane
         /// <returns></returns>
         public static T operator -(Parking<T> p, int index)
         {
-            if (index < 0 || index > p._places.Length)
+            if (index < -1 || index > p._places.Count)
             {
                 return null;
             }
-            if (!p.CheckFreePlace(index))
-            {
-
-                T vehicle = p._places[index];
-                p._places[index] = null;
-                return vehicle;
-            }
-            return null;
+            T vehicle = p._places[index];
+            p._places.RemoveAt(index);
+            return vehicle;
         }
 
         /// <summary>
@@ -105,9 +100,11 @@ namespace WindowsFormsCrane
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            for (int i = 0; i < _places.Length; i++)
+            for (int i = 0; i < _places.Count; ++i)
             {
-                _places[i]?.DrawTransport(g);
+                _places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5, i % 5 *
+               _placeSizeHeight + 15, pictureWidth, pictureHeight);
+                _places[i].DrawTransport(g);
             }
         }
         /// <summary>
