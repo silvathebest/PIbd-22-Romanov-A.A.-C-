@@ -66,5 +66,14 @@ namespace WindowsFormsCrane
                 g.FillRectangle(dopBrush, _startPosX + 15, _startPosY + vehicleHeight - 40, 10, 25);
             }
         }
+
+        /// <summary>
+        /// Смена дополнительного цвета
+        /// </summary>
+        /// <param name="color"></param>
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
     }
 }

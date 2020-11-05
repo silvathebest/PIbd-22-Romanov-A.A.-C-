@@ -94,58 +94,32 @@ namespace WindowsFormsCrane
             }
         }
 
-
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать гусеничную машину"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonSetTrackedVehicle_Click(object sender, EventArgs e)
+        private void buttonSetCar_Click(object sender, EventArgs e)
         {
-            if (listBoxParking.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var trackedVehicle = new TrackedVehicle(100, 1000, dialog.Color);
-                    if (parkingCollection[listBoxParking.SelectedItem.ToString()] + trackedVehicle)
-                    {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Парковка переполнена");
-                    }
-                }
-            }
-
+            var formVehicleConfig = new FormVehicleConfig();
+            formVehicleConfig.AddEvent(AddCar);
+            formVehicleConfig.Show();
         }
         /// <summary>
-        /// Обработка нажатия кнопки "Припарковать кран"
+        /// Метод добавления машины
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonSetCrane_Click(object sender, EventArgs e)
+        /// <param name="car"></param>
+        private void AddCar(Vehicle vehicle)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (vehicle != null && listBoxParking.SelectedIndex > -1)
             {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
+                if ((parkingCollection[listBoxParking.SelectedItem.ToString()]) + vehicle)
                 {
-                    var crane = new Crane(100, 1000, dialog.Color, dialogDop.Color,
-                   true, true, true);
-                    if (parkingCollection[listBoxParking.SelectedItem.ToString()] + crane)
-                    {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Парковка переполнена");
-                    }
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Машину не удалось поставить");
                 }
             }
         }
+
+
         /// <summary>
         /// Обработка нажатия кнопки "Забрать"
         /// </summary>

@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
-            this.buttonCrateTrackedVehicle = new System.Windows.Forms.Button();
-            this.buttonCreateCrane = new System.Windows.Forms.Button();
             this.groupBoxParking = new System.Windows.Forms.GroupBox();
             this.buttonTakeVehicle = new System.Windows.Forms.Button();
             this.maskedTextBoxPickPlace = new System.Windows.Forms.MaskedTextBox();
@@ -40,6 +38,7 @@
             this.buttonAddParking = new System.Windows.Forms.Button();
             this.listBoxParking = new System.Windows.Forms.ListBox();
             this.buttonDelParking = new System.Windows.Forms.Button();
+            this.buttonAddVehicle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBoxParking.SuspendLayout();
             this.SuspendLayout();
@@ -53,28 +52,6 @@
             this.pictureBoxParking.Size = new System.Drawing.Size(896, 687);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
-            // 
-            // buttonCrateTrackedVehicle
-            // 
-            this.buttonCrateTrackedVehicle.Location = new System.Drawing.Point(904, 368);
-            this.buttonCrateTrackedVehicle.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonCrateTrackedVehicle.Name = "buttonCrateTrackedVehicle";
-            this.buttonCrateTrackedVehicle.Size = new System.Drawing.Size(151, 60);
-            this.buttonCrateTrackedVehicle.TabIndex = 1;
-            this.buttonCrateTrackedVehicle.Text = "Припарковать гусеничную машину";
-            this.buttonCrateTrackedVehicle.UseVisualStyleBackColor = true;
-            this.buttonCrateTrackedVehicle.Click += new System.EventHandler(this.buttonSetTrackedVehicle_Click);
-            // 
-            // buttonCreateCrane
-            // 
-            this.buttonCreateCrane.Location = new System.Drawing.Point(904, 435);
-            this.buttonCreateCrane.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonCreateCrane.Name = "buttonCreateCrane";
-            this.buttonCreateCrane.Size = new System.Drawing.Size(151, 60);
-            this.buttonCreateCrane.TabIndex = 2;
-            this.buttonCreateCrane.Text = "Припарковать кран";
-            this.buttonCreateCrane.UseVisualStyleBackColor = true;
-            this.buttonCreateCrane.Click += new System.EventHandler(this.buttonSetCrane_Click);
             // 
             // groupBoxParking
             // 
@@ -165,19 +142,28 @@
             this.buttonDelParking.UseVisualStyleBackColor = true;
             this.buttonDelParking.Click += new System.EventHandler(this.buttonDelParking_Click);
             // 
+            // buttonAddVehicle
+            // 
+            this.buttonAddVehicle.Location = new System.Drawing.Point(904, 442);
+            this.buttonAddVehicle.Name = "buttonAddVehicle";
+            this.buttonAddVehicle.Size = new System.Drawing.Size(151, 54);
+            this.buttonAddVehicle.TabIndex = 9;
+            this.buttonAddVehicle.Text = "Добавить транспорт";
+            this.buttonAddVehicle.UseVisualStyleBackColor = true;
+            this.buttonAddVehicle.Click += new System.EventHandler(this.buttonSetCar_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 687);
+            this.Controls.Add(this.buttonAddVehicle);
             this.Controls.Add(this.buttonDelParking);
             this.Controls.Add(this.listBoxParking);
             this.Controls.Add(this.buttonAddParking);
             this.Controls.Add(this.maskedTextBoxNameParking);
             this.Controls.Add(this.labelNameParking);
             this.Controls.Add(this.groupBoxParking);
-            this.Controls.Add(this.buttonCreateCrane);
-            this.Controls.Add(this.buttonCrateTrackedVehicle);
             this.Controls.Add(this.pictureBoxParking);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormParking";
@@ -193,8 +179,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxParking;
-        private System.Windows.Forms.Button buttonCrateTrackedVehicle;
-        private System.Windows.Forms.Button buttonCreateCrane;
         private System.Windows.Forms.GroupBox groupBoxParking;
         private System.Windows.Forms.Button buttonTakeVehicle;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxPickPlace;
@@ -204,5 +188,6 @@
         private System.Windows.Forms.Button buttonAddParking;
         private System.Windows.Forms.ListBox listBoxParking;
         private System.Windows.Forms.Button buttonDelParking;
+        private System.Windows.Forms.Button buttonAddVehicle;
     }
 }
