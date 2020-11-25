@@ -17,6 +17,27 @@ namespace WindowsFormsCrane
         public bool Hook { private set; get; }
         // Признак наличия задней трубы
         public bool BackPipe { private set; get; }
+
+        /// <summary>
+        /// Конструктор для загрузки с файла
+        /// </summary>
+        /// <param name="info"></param>
+        public Crane(string info) : base(info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 7)
+            {
+
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                FrontCrane = Convert.ToBoolean(strs[4]);
+                Hook = Convert.ToBoolean(strs[5]);
+                BackPipe = Convert.ToBoolean(strs[6]);
+            }
+        }
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -75,5 +96,9 @@ namespace WindowsFormsCrane
         {
             DopColor = color;
         }
+
+        public override string ToString() => $"{base.ToString()}{separator}{DopColor.Name}" +
+            $"{separator}{FrontCrane}{separator}{BackPipe}{ separator}{ Hook}";
+
     }
 }

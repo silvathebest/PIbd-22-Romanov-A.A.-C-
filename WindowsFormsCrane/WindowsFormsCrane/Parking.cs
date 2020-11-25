@@ -126,5 +126,12 @@ namespace WindowsFormsCrane
             }
         }
 
+        /// <summary>
+        /// Функция получения элементы из списка
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public T GetNext(int index) => index < 0 || index >= _places.Count ? null : _places[index];
+
     }
 }

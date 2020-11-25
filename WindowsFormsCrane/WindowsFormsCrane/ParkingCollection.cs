@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,10 @@ namespace WindowsFormsCrane
         /// Высота окна отрисовки
         /// </summary>
         private readonly int pictureHeight;
+        /// <summary>
+        /// Разделитель для записи информации в файл
+        /// </summary>
+        private readonly char separator = ':';
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -72,5 +77,91 @@ namespace WindowsFormsCrane
         /// <param name="ind"></param>
         /// <returns></returns>
         public Parking<Vehicle> this[string ind] => parkingStages.ContainsKey(ind) ? parkingStages[ind] : null;
+
+        /// <summary>
+        /// Сохранение информации по автомобилям на парковках в файл
+        /// </summary>
+        /// <param name="filename">Путь и имя файла</param>
+        /// <returns></returns>
+        public bool SaveData(string filename)
+        {
+            using (StreamWriter streamWriter = new StreamWriter
+            (filename, false, System.Text.Encoding.Default))
+            {
+                streamWriter.WriteLine("ParkingCollection");
+                foreach (var level in parkingStages)
+                {
+                    streamWriter.WriteLine("Parking" + separator + level.Key);
+
+                    ITransport vehicle;
+                    for (int i = 0; (vehicle = level.Value.GetNext(i)) != null; i++)
+                    {
+                        if (vehicle.GetType().Name == "Crane")
+                        {
+                            streamWriter.Write("Crane" + separator);
+                        }
+                        else if (vehicle.GetType().Name == "TrackedVehicle")
+                        {
+                            streamWriter.Write("TrackedVehicle" + separator);
+                        }
+                        streamWriter.WriteLine(vehicle);
+                    }
+                }
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Загрузка нформации по автомобилям на парковках из файла
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        public bool LoadData(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                return false;
+            }
+
+            using (StreamReader streamReader = new StreamReader
+            (filename, System.Text.Encoding.Default))
+            {
+                if (streamReader.ReadLine().Contains("ParkingCollection"))
+                {
+                    parkingStages.Clear();
+                }
+                else
+                {
+                    return false;
+                }
+                Vehicle transport = null;
+                string key = string.Empty;
+                string line;
+                for (int i = 0; (line = streamReader.ReadLine()) != null; i++)
+                {
+                    if (line.Contains("Parking"))
+                    {
+                        key = line.Split(separator)[1];
+                        parkingStages.Add(key, new Parking<Vehicle>(pictureWidth, pictureHeight));
+                    }
+                    else if (line.Contains(separator))
+                    {
+                        if (line.Contains("Crane"))
+                        {
+                            transport = new Crane(line.Split(separator)[1]);
+                        }
+                        else if (line.Contains("TrackedVehicle"))
+                        {
+                            transport = new TrackedVehicle(line.Split(separator)[1]);
+                        }
+                        if (!(parkingStages[key] + transport))
+                        {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+        }
     }
 }

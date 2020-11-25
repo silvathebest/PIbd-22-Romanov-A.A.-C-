@@ -13,10 +13,34 @@ namespace WindowsFormsCrane
         /// Ширина отрисовки гусеничного автомобиля
         /// </summary>
         protected readonly int vehicleWidth = 120;
+
         /// <summary>
         /// Высота отрисовки гусеничного автомобиля
         /// </summary>
         protected readonly int vehicleHeight = 45;
+
+        /// <summary>
+        /// Разделитель для записи информации по объекту в файл
+        /// </summary>
+        protected readonly static char separator = ';';
+
+        /// <summary>
+        /// Конструктор для загрузки с файла
+        /// </summary>
+        /// <param name="info">Информация по объекту</param>
+
+        public TrackedVehicle (string info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+
+            }
+        }
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -89,14 +113,17 @@ namespace WindowsFormsCrane
             Brush brush = new SolidBrush(MainColor);
             Brush brushBlack = new SolidBrush(Color.Black);
             //рисуем кузов гуснечной машины
-            g.FillRectangle(brush, _startPosX + 5, _startPosY + vehicleHeight - 20, vehicleWidth , 30);
+            g.FillRectangle(brush, _startPosX + 5, _startPosY + vehicleHeight - 20, vehicleWidth, 30);
             //гусеницы
             g.FillEllipse(brushBlack, _startPosX, _startPosY + vehicleHeight + 10, 25, 20);
             g.FillEllipse(brushBlack, _startPosX + 25, _startPosY + vehicleHeight + 10, 25, 20);
             g.FillEllipse(brushBlack, _startPosX + 50, _startPosY + vehicleHeight + 10, 25, 20);
             g.FillEllipse(brushBlack, _startPosX + 75, _startPosY + vehicleHeight + 10, 25, 20);
             g.FillEllipse(brushBlack, _startPosX + 100, _startPosY + vehicleHeight + 10, 25, 20);
-            g.DrawRectangle(pen, _startPosX + 10, _startPosY + vehicleHeight + 10, vehicleWidth - 15 , 20);
+            g.DrawRectangle(pen, _startPosX + 10, _startPosY + vehicleHeight + 10, vehicleWidth - 15, 20);
         }
+
+        public override string ToString() => $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
+
     }
 }
