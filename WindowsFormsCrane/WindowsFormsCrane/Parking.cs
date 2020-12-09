@@ -63,7 +63,7 @@ namespace WindowsFormsCrane
         {
             if (p._places.Count >= p._maxCount)
             {
-                return false;
+                throw new ParkingOverflowException();
             }
             p._places.Add(vehicle);
             return true;
@@ -78,9 +78,9 @@ namespace WindowsFormsCrane
         /// <returns></returns>
         public static T operator -(Parking<T> p, int index)
         {
-            if (index < -1 || index > p._places.Count)
+            if (index < -1 || index > p._places.Count - 1)
             {
-                return null;
+                throw new ParkingNotFoundException(index);
             }
             T vehicle = p._places[index];
             p._places.RemoveAt(index);

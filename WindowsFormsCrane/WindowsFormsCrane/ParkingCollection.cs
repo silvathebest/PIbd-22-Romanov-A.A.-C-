@@ -83,8 +83,9 @@ namespace WindowsFormsCrane
         /// </summary>
         /// <param name="filename">Путь и имя файла</param>
         /// <returns></returns>
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
+
             using (StreamWriter streamWriter = new StreamWriter
             (filename, false, System.Text.Encoding.Default))
             {
@@ -107,7 +108,6 @@ namespace WindowsFormsCrane
                         streamWriter.WriteLine(vehicle);
                     }
                 }
-                return true;
             }
         }
 
@@ -116,11 +116,11 @@ namespace WindowsFormsCrane
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
 
             using (StreamReader streamReader = new StreamReader
@@ -132,7 +132,7 @@ namespace WindowsFormsCrane
                 }
                 else
                 {
-                    return false;
+                    throw new FormatException("Неверный формат файла");
                 }
                 Vehicle transport = null;
                 string key = string.Empty;
@@ -156,11 +156,10 @@ namespace WindowsFormsCrane
                         }
                         if (!(parkingStages[key] + transport))
                         {
-                            return false;
+                            throw new TypeLoadException("Не удалось загрузить автомобиль на парковку");
                         }
                     }
                 }
-                return true;
             }
         }
     }
