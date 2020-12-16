@@ -94,8 +94,7 @@ namespace WindowsFormsCrane
                 {
                     streamWriter.WriteLine("Parking" + separator + level.Key);
 
-                    ITransport vehicle;
-                    for (int i = 0; (vehicle = level.Value.GetNext(i)) != null; i++)
+                    foreach (ITransport vehicle in level.Value)
                     {
                         if (vehicle.GetType().Name == "Crane")
                         {

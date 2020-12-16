@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="ITransport.cs" />
     <Compile Include="Parking.cs" />
+    <Compile Include="ParkingAlreadyHaveException.cs" />
     <Compile Include="ParkingCollection.cs" />
     <Compile Include="ParkingNotFoundException.cs" />
     <Compile Include="ParkingOccupiedPlaceException.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrackedVehicle.cs" />
     <Compile Include="Vehicle.cs" />
+    <Compile Include="VehicleCompare.cs" />
     <EmbeddedResource Include="CraneForm.resx">
       <DependentUpon>CraneForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsCrane
 {
-    public class Crane : TrackedVehicle
+    public class Crane : TrackedVehicle, IEquatable<Crane>
     {
         // Дополнительный цвет
         public Color DopColor { private set; get; }
@@ -27,7 +27,6 @@ namespace WindowsFormsCrane
             string[] strs = info.Split(separator);
             if (strs.Length == 7)
             {
-
                 MaxSpeed = Convert.ToInt32(strs[0]);
                 Weight = Convert.ToInt32(strs[1]);
                 MainColor = Color.FromName(strs[2]);
@@ -99,6 +98,62 @@ namespace WindowsFormsCrane
 
         public override string ToString() => $"{base.ToString()}{separator}{DopColor.Name}" +
             $"{separator}{FrontCrane}{separator}{BackPipe}{ separator}{ Hook}";
+
+        /// <summary>
+        /// Метод интерфейса IEquatable для класса Crane
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(Crane other)
+        {
+            var res = (this as TrackedVehicle).Equals(other as TrackedVehicle);
+            if (!res)
+            {
+                return res;
+            }
+            if (other == null)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (FrontCrane != other.FrontCrane)
+            {
+                return false;
+            }
+            if (BackPipe != other.BackPipe)
+            {
+                return false;
+            }
+            if (Hook != other.Hook)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Crane craneObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(craneObj);
+            }
+        }
 
     }
 }
